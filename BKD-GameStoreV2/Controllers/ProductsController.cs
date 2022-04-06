@@ -64,20 +64,6 @@ namespace BKD_GameStoreV2.Controllers
                 {
                     return NotFound();
                 }
-
-
-                /*if (System.IO.File.Exists(product.image))
-                {
-                    System.IO.File.Delete(product.image);
-                }
-                var formCollection = await Request.ReadFormAsync();
-                var file = formCollection.Files.First();
-                using (var stream = new FileStream(product.image, FileMode.Create))
-                {
-                    file.CopyTo(stream);
-                }*/
-
-
                 _context.Update(product);
                 await _context.SaveChangesAsync();
                 return Ok(new { message = "update product successfull" });
