@@ -11,6 +11,7 @@ namespace BKD_GameStoreV2.Controllers
     [ApiController]
     public class ProductsImagesController : ControllerBase
     {
+
         [HttpPost, DisableRequestSizeLimit]
         public async Task<IActionResult> Upload()
         {
@@ -41,5 +42,6 @@ namespace BKD_GameStoreV2.Controllers
                 return StatusCode(500, $"Internal server error: {ex}");
             }
         }
+
     }
 }

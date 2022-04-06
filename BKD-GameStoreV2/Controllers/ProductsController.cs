@@ -54,17 +54,53 @@ namespace BKD_GameStoreV2.Controllers
         }
 
 
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, [FromBody] Products product)
+        {
+            try
+            {
+                if (id != product.id)
+                {
+                    return NotFound();
+                }
+
+
+                /*if (System.IO.File.Exists(product.image))
+                {
+                    System.IO.File.Delete(product.image);
+                }
+                var formCollection = await Request.ReadFormAsync();
+                var file = formCollection.Files.First();
+                using (var stream = new FileStream(product.image, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }*/
+
+
+                _context.Update(product);
+                await _context.SaveChangesAsync();
+                return Ok(new { message = "update product successfull" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             try
             {
-                var card = await _context.Products.FindAsync(id);
-                if (card == null)
+                var product = await _context.Products.FindAsync(id);
+                if (product == null)
                 {
                     return NotFound();
                 }
-                _context.Products.Remove(card);
+                System.IO.File.Delete(product.image);
+                _context.Products.Remove(product);
                 await _context.SaveChangesAsync();
                 return Ok(new { message = "delete product successfull" });
             }
