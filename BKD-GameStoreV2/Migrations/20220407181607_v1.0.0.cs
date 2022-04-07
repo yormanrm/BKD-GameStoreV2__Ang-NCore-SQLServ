@@ -18,6 +18,7 @@ namespace BKD_GameStoreV2.Migrations
                     quantity = table.Column<int>(type: "int", nullable: false),
                     state = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     platform = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    subplatform = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     category = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     image = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },

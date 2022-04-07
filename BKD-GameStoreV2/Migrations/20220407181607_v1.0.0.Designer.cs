@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BKD_GameStoreV2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220405011720_v1.0.0")]
+    [Migration("20220407181607_v1.0.0")]
     partial class v100
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,6 +54,10 @@ namespace BKD_GameStoreV2.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("state")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("subplatform")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

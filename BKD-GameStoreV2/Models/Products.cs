@@ -23,6 +23,8 @@ namespace BKD_GameStoreV2.Models
 
         [Required]
         public string platform { get; set; }
+        [Required]
+        public string subplatform { get; set; }
 
         [Required]
         public string category { get; set; }
